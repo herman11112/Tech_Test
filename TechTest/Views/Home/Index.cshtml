@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@*@model List<Profiles>*@
+@model TechTest.Models.MyViewModel
+
+<div class="text-center">
+    <h1 class="display-4">TechTest</h1>
+
+    <br />
+    <br />
+
+ 
+    <table border="1" width="39%" align="center" id="ProfileTable" style="display:none" class="table-container">
+
+        <tr>
+            <td width="33%">
+               Name
+            </td>
+            <td width="33%">
+               Age
+            </td>
+            <td width="34%">
+              Designation
+            </td>
+
+            @foreach (var viewModel in Model.profileList)
+            {
+            <tr>
+                <td width="33%">
+                        @viewModel.Name
+                </td>
+                <td width="33%">
+                        @viewModel.Age
+                </td>
+                <td width="34%">
+                        @viewModel.Designation
+                </td>
+            </tr>
+        }
+    
+    </table>
+
+    <table border="1" width="39%" align="center" id="FruitTable" style="display:none" class="table-container">
+
+        <tr>
+            <td width="33%">
+               Fruit Name
+            </td>
+
+
+            @foreach (var viewModel in Model.fruitList)
+            {
+            <tr>
+                <td width="33%">
+                @viewModel
+                </td>
+            
+            </tr>
+        }
+    
+    </table>
+
+    <table border="1" width="39%" align="center" id="VeggieTable" style="display:none" class="table-container">
+
+        <tr>
+            <td width="33%" border="1">
+               Veggie Name
+            </td>
+
+
+            @foreach (var viewModel in Model.veggiesList)
+            {
+            <tr>
+                <td width="33%">
+                        @viewModel
+                </td>
+            
+            </tr>
+        }
+    
+    </table>
+
+
+        <button type="submit" name="buttonIdentifier" onclick="displayTable('FruitTable')" value="fruit">Fruit</button>
+        <button type="submit" name="buttonIdentifier" onclick="displayTable('VeggieTable')" value="veggies">Veggies</button>
+        <button type="submit" name="buttonIdentifier" onclick="displayTable('ProfileTable')" value="profiles">Profiles</button>
+
+        <script>
+        function displayTable(tableID) {
+
+            var tables = document.getElementsByClassName('table-container');
+            
+            for (var i = 0; i < tables.length; i++) {
+                tables[i].style.display = 'none';
+            }
+
+            document.getElementById(tableID).style.display = 'block';
+
+
+        }
+    </script>
+
+
+</div>
